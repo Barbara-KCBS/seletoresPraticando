@@ -1,0 +1,29 @@
+h1, h2{
+    text-align: center;
+    margin: 20px 0 10px 0;
+    text-transform: uppercase;
+}
+.formulario{
+    width: 500px;
+    border: 1px solid;
+    padding: 20px;
+    margin: 0 auto;
+}
+.input-dados{
+    width: 400px;
+    display: block;
+    margin: 0 0 10px 0;
+}
+.container{
+    width: 80%;
+    margin: 20px auto;
+}
+.cabecalho th{
+    width: 362px;
+    border: 1px solid;
+    padding: 8px;
+}
+.linha-da-tabela{
+    border: 1px solid;
+    padding: 6px;
+}

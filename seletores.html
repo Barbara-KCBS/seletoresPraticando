@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+    <h1>Cadastro do aluno</h1>
+
+    <form action="" class="formulario" id="formulario" >
+
+        <label for="nome">Nome do aluno*</label>
+        <input type="text" id="nome"  class="input-dados" data-nome required placeholder="Nome e sobrenome">
+
+        <label for="endereco">Endereço*</label>
+        <input type="text" id="endereco" class="input-dados" data-endereco required placeholder="Bairro">
+
+        <label for="telefone">Telefone*</label>
+        <input type="text" id="telefone" class="input-dados" data-telefone required placeholder="(xx) xxxxx-xxxx">
+
+        <input type="submit" value="Cadastrar" data-enviar-cadastro>
+
+    </form>
+    
+    <section class="container">
+
+        <h2>Relação de alunos cadastrados</h2>
+
+            <table class="tabela-alunos" data-tabela-alunos>
+
+                    <thead>
+                        <tr class="cabecalho">
+                            <th>Nome</th>
+                            <th>Endereço</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-corpo-tabela>
+
+                    </tbody>
+                   
+            </table>
+            
+    </section>
+<script>
+    const BotaoCadastrar = (evento) =>{
+
+        evento.preventDefault()
+
+        const corpoDaTabela = document.querySelector('[data-corpo-tabela]')
+
+        const linhaDaTabela = document.createElement('tr') // cria uma linha na tabela onde vai ficar o conjunto de dados do aluno
+        corpoDaTabela.appendChild(linhaDaTabela)
+
+        const inputNome = document.querySelector('[data-nome]')
+        const nomeAluno = inputNome.value
+
+        const inputEndereco = document.querySelector('[data-endereco]')
+        const enderecoAluno = inputEndereco.value
+
+        const inputTelefone = document.querySelector('[data-telefone]')
+        const telefoneAluno = inputTelefone.value
+       
+
+        var dadosDoAluno = [nomeAluno, enderecoAluno, telefoneAluno]
+
+        if(nomeAluno == '' || enderecoAluno == '' || telefoneAluno == ''){
+            alert("Por favor, preencha os campos obrigatórios")
+        
+        }else{
+            // Cria celulas na tabela e insere cada informação do aluno em cada uma das celulas
+            for(var i = 0; i < dadosDoAluno.length; i++){
+
+                    const celulaDaTabela = document.createElement('td')
+                    celulaDaTabela.classList.add('linha-da-tabela')
+                    celulaDaTabela.innerHTML = dadosDoAluno[i]
+                    linhaDaTabela.appendChild(celulaDaTabela)
+                
+            } 
+
+            //Limpa o campo de preenchimento do input após a finalização do cadastro
+            var inputDosDados = [inputNome, inputEndereco, inputTelefone]
+
+            for(var i = 0; i < inputDosDados.length; i++){
+                inputDosDados[i].value = ''
+            }
+            
+
+      }
+    }
+
+    const enviarCadastro = document.querySelector('[data-enviar-cadastro]')
+    enviarCadastro.addEventListener('click', BotaoCadastrar)
+
+</script>
+</body>
+</html>

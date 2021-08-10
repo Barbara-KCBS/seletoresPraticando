@@ -40,10 +40,21 @@ const BotaoCadastrar = (evento) =>{
         for(var i = 0; i < inputDosDados.length; i++){
             inputDosDados[i].value = '';
         }
-        
-
-  }
+        criarBotaoExcluir(linhaDaTabela);
+    }
 }
 
 const enviarCadastro = document.querySelector('[data-enviar-cadastro]');
 enviarCadastro.addEventListener('click', BotaoCadastrar);
+
+function criarBotaoExcluir(linha){
+    var botaoExcluir = document.createElement('button');
+    botaoExcluir.innerHTML = "Excluir";
+    linha.appendChild(botaoExcluir);
+    botaoExcluir.addEventListener("click", excluirCadastro);
+    return botaoExcluir;
+}
+function excluirCadastro(){
+    this.parentElement.remove();
+}
+
